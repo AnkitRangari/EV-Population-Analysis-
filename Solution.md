@@ -140,26 +140,9 @@ GROUP BY `Model Year`
 ORDER BY `Model Year`;
 ```
 
-16. Write a stored procedure to update the Base MSRP of a vehicle given its VIN (1-10) and new Base MSRP.
-```bash
-DELIMITER //
 
-CREATE PROCEDURE UpdateBaseMSRP(
-    IN p_VIN VARCHAR(10),
-    IN p_NewBaseMSRP DECIMAL(10, 2)
-)
-BEGIN
-    UPDATE electric_vehicle_population_data
-    SET `Base MSRP` = p_NewBaseMSRP
-    WHERE `VIN (1-10)` = p_VIN;
-END //
 
-DELIMITER ;
-CALL updstebaseMSRP(`WBY8P6C58K`, 5000);
-SELECT vin , `base msrp` FROM electric_vehicle_population_data;
-```
-
-17. Write a query to find the county with the highest average Base MSRP for electric vehicles. 
+16. Write a query to find the county with the highest average Base MSRP for electric vehicles. 
 Use subqueries and aggregate functions to achieve this.
 ```bash
 SELECT County, AVG_MSRP
@@ -171,7 +154,7 @@ FROM (
 ORDER BY AVG_MSRP DESC
 LIMIT 1;
 ```
-18. Write a query to find pairs of electric vehicles from the same City where one vehicle has a longer Electric Range than the other. Display columns for VIN_1, Range_1, VIN_2, and Range_2.
+17. Write a query to find pairs of electric vehicles from the same City where one vehicle has a longer Electric Range than the other. Display columns for VIN_1, Range_1, VIN_2, and Range_2.
 ```bash
 SELECT ev1.VIN AS VIN_1, 
 ev1.`Electric Range` AS Range_1, ev2.VIN AS VIN_2, 
